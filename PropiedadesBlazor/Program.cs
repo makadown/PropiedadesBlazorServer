@@ -16,10 +16,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 	.AddEntityFrameworkStores<ApplicationDbContext>();
+
+// inject automapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
-builder.Services.AddSingleton<WeatherForecastService>();
 
 var app = builder.Build();
 

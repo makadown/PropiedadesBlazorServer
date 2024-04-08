@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using PropiedadesBlazor.Modelos;
 
 namespace PropiedadesBlazor.Data
 {
@@ -9,5 +10,7 @@ namespace PropiedadesBlazor.Data
 			: base(options)
 		{
 		}
+
+		public DbSet<Categoria> Categoria { get; set; }
 	}
 }
