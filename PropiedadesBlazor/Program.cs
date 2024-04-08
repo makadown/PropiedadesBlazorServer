@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using PropiedadesBlazor.Areas.Identity;
 using PropiedadesBlazor.Data;
+using PropiedadesBlazor.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,10 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+
+// Agregar servicios
+builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
+
 
 var app = builder.Build();
 
