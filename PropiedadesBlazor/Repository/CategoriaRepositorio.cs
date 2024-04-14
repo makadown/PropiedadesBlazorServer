@@ -21,10 +21,7 @@ namespace PropiedadesBlazor.Repository
         {
             try 
             {
-                if (categoriaDTO == null) {
-                    return null;
-                }
-                if (categoriaId == categoriaDTO.Id)
+                if (categoriaDTO != null && categoriaId == categoriaDTO.Id)
                 { 
                     var categoria = await db.Categoria.FindAsync(categoriaDTO.Id);
                     if (categoria == null)
@@ -37,7 +34,11 @@ namespace PropiedadesBlazor.Repository
                     await db.SaveChangesAsync();
                     return mapper.Map<Categoria, CategoriaDTO>(categoriaActualizada.Entity);
                 }
-            }
+                else
+				{
+					return null;
+				}
+			}
             catch (Exception ex) 
             {
                 return null;
@@ -90,6 +91,7 @@ namespace PropiedadesBlazor.Repository
                 db.Categoria.Remove(categoria);
                 return await db.SaveChangesAsync();
             }
+            return -1;
         }
 
         public async Task<CategoriaDTO> NombreCategoriaExiste(string nombre)
