@@ -41,7 +41,7 @@
 							<td>@categoria.Descripcion</td>
 							<td>
 								<NavLink href="@($"editar-categoria/{categoria.Id}")" class="btn btn-success">
-									<i class="bi bi-gear-fill mx-1"></i>
+									<i class="bi bi-pencil-fill mx-1"></i>
 								</NavLink>
 								<button class="btn btn-danger" @onclick="()=>ManejadorOnBorrar(categoria.Id)">
 									<i class="bi bi-trash-fill mx-1"></i>
