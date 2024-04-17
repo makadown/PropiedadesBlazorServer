@@ -3,6 +3,7 @@
 @using PropiedadesBlazor.Repository
 @inject ICategoriaRepositorio CategoriaRepositorio
 @inject NavigationManager navigationManager
+@inject IJSRuntime js
 
 <h1 class="text-center">Crear categoria</h1>
 
@@ -90,16 +91,19 @@
 			var categoriaOrigen = await CategoriaRepositorio.GetCategoria(Id.Value);
 			if (categoriaOrigen is null)
 			{
+				await js.SwalError("Categoria inválida");
 				return;
 			}
 			var nombreCategoria = await CategoriaRepositorio.NombreCategoriaExiste(categoriaDTO.NombreCategoria);
 			if (nombreCategoria != null && 
 				categoriaDTO.NombreCategoria.ToLowerInvariant() != categoriaOrigen.NombreCategoria.ToLowerInvariant() )
 			{
+				await js.SwalError("El nombre de la categoria ya existe");
 				return;
 			}
 			// si entra aqui, no existe, y hay que Editarlo.
 			var editarCategoria = await CategoriaRepositorio.ActualizarCategoria(Id.Value, categoriaDTO);
+			await js.ToastrSuccess("Actualización exitosa");
 			navigationManager.NavigateTo("categorias");
 		}
 	}
