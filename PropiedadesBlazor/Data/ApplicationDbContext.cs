@@ -12,5 +12,6 @@ namespace PropiedadesBlazor.Data
 		}
 
 		public DbSet<Categoria> Categoria { get; set; }
+		public DbSet<Propiedad> Propiedad { get; set; }
 	}
 }

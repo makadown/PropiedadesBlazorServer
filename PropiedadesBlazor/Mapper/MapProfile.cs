@@ -11,6 +11,7 @@ namespace PropiedadesBlazor.Mapper
         public MapProfile()
         {
             CreateMap<CategoriaDTO, Categoria>().ReverseMap();
+            CreateMap<PropiedadDTO, Propiedad>().ReverseMap();
         }
     }
 }

@@ -59,7 +59,7 @@ namespace PropiedadesBlazor.Repository
             try
             {
                 IEnumerable<CategoriaDTO> categoriasDTO =
-                    mapper.Map<IEnumerable<Categoria>, IEnumerable<CategoriaDTO>>(db.Categoria);
+                    mapper.Map<IEnumerable<Categoria>, IEnumerable<CategoriaDTO>>(await db.Categoria.ToArrayAsync());
                 return categoriasDTO;
             }
             catch (Exception ex)
