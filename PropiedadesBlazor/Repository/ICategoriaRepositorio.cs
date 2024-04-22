@@ -11,6 +11,6 @@ namespace PropiedadesBlazor.Repository
         public Task<CategoriaDTO> ActualizarCategoria(int categoriaId, CategoriaDTO categoriaDTO);
         public Task<CategoriaDTO> NombreCategoriaExiste(string nombre);
         public Task<int> BorrarCategoria(int categoriaId);
-        // public Task<IEnumerable<CategoriaDTO>> GetDropDownCategorias();
+        public Task<IEnumerable<DropDownCategoriaDTO>> GetDropDownCategorias();
     }
 }

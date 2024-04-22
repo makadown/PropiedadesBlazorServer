@@ -1,0 +1,88 @@
+﻿@page "/propiedades"
+@using PropiedadesBlazor.Modelos.DTO
+@using PropiedadesBlazor.Repository
+@inject IPropiedadRepositorio PropiedadRepositorio
+
+<h1 class="text-center">Propiedades</h1>
+
+<div class="card">
+	<div class="card-header">
+		<div class="row">
+			<div class="col-7">
+				<h4 class="card-title text-dark">
+					Lista de Propiedades
+				</h4>
+			</div>
+			<div class="col-3 offset-2">
+				<NavLink href="crear-propiedad" class="btn btn-primary">
+					<i class="bi bi-plus-circle-fill mx-1"> </i> Nueva Propiedad
+				</NavLink>
+			</div>
+		</div>
+	</div>
+	<div class="card-body">
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Descripcion</th>
+					<th>Area</th>
+					<th>Habitaciones</th>
+					<th>Baños</th>
+					<th>Parqueadero</th>
+					<th>Precio</th>
+					<th>Activo</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				@if (propiedadDTO != null && propiedadDTO.Count() > 0)
+				{
+					foreach (var propiedad in propiedadDTO)
+					{
+						<tr>
+							<td>@propiedad.Id</td>
+							<td>@propiedad.Nombre</td>
+							<td>@propiedad.Descripcion</td>
+							<td>@propiedad.Area</td>
+							<td>@propiedad.Habitaciones</td>
+							<td>@propiedad.Banios</td>
+							<td>@propiedad.Parqueadero</td>
+							<td>@propiedad.Precio</td>
+							<td>@propiedad.Activo</td>
+							<td>
+								<NavLink href="@($"editar-propiedad/{propiedad.Id}")" class="btn btn-success">
+									<i class="bi bi-pencil-fill mx-1"></i>
+								</NavLink>
+								<button class="btn btn-danger" @onclick="()=>ManejadorOnBorrar(propiedad.Id)">
+									<i class="bi bi-trash-fill mx-1"></i>
+								</button>
+							</td>
+						</tr>
+					}
+				}
+				else
+				{
+					<tr>
+						<td colspan="5">No hay registros</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+@code {
+	private IEnumerable<PropiedadDTO> propiedadDTO { get; set; } = new List<PropiedadDTO>();
+
+	protected override async Task OnInitializedAsync()
+	{
+		propiedadDTO = await PropiedadRepositorio.GetAll();
+	}
+
+	private async Task ManejadorOnBorrar(int categoriaId)
+	{
+
+	}
+}

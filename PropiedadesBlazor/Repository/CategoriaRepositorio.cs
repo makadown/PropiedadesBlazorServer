@@ -108,5 +108,19 @@ namespace PropiedadesBlazor.Repository
                 return null;
             }
         }
+
+        public async Task<IEnumerable<DropDownCategoriaDTO>> GetDropDownCategorias()
+        {
+            try
+            {
+                IEnumerable<DropDownCategoriaDTO> dropDownCategoriasDTO =
+                    mapper.Map<IEnumerable<Categoria>, IEnumerable<DropDownCategoriaDTO>>(db.Categoria);
+                return (dropDownCategoriasDTO);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

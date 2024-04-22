@@ -27,7 +27,7 @@ namespace PropiedadesBlazor.Modelos.DTO
 		public int Banios { get; set; }
 		[Required(ErrorMessage = "El campo es requerido")]
 		[Range(1, 20, ErrorMessage = "El valor debe estar entre 1 y 20")]
-		public int Parqueaderos { get; set; } = 0;
+		public int Parqueadero { get; set; } = 0;
 		[Required(ErrorMessage = "El campo es requerido")]
 		[Column(TypeName = "decimal(18,2)")]
 		public decimal Precio { get; set; }
@@ -38,5 +38,10 @@ namespace PropiedadesBlazor.Modelos.DTO
 
 		// Relación con modelo/tabla categoria
 		public int CategoriaId { get; set; }
-	}
+
+        public virtual Categoria Categoria { get; set; }
+
+        // public virtual ICollection<ImagenPropiedad> ImagenPropiedad { get; set; }
+        public List<string> UrlImagenes { get; set; }
+    }
 }

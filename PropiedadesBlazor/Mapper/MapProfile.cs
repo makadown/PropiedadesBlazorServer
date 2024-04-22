@@ -11,7 +11,9 @@ namespace PropiedadesBlazor.Mapper
         public MapProfile()
         {
             CreateMap<CategoriaDTO, Categoria>().ReverseMap();
-            CreateMap<PropiedadDTO, Propiedad>().ReverseMap();
+            CreateMap<Propiedad, PropiedadDTO>().ReverseMap();
+            CreateMap<Categoria, DropDownCategoriaDTO>().ReverseMap();
+            // CreateMap<ImagenPropiedad, ImagenPropiedadDTO>().ReverseMap();
         }
     }
 }
