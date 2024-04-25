@@ -3,6 +3,6 @@
     public class DropDownCategoriaDTO
     {
         public int Id { get; set; }
-        public string NombreCategoria { get; set; }= string.Empty;
+        public string NombreCategoria { get; set; }
     }
 }

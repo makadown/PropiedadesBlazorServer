@@ -12,15 +12,15 @@ using PropiedadesBlazor.Data;
 namespace PropiedadesBlazor.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240418154420_CreacionTablaPropiedadYSuRelacion")]
-    partial class CreacionTablaPropiedadYSuRelacion
+    [Migration("20230904195746_CreacionModeloImagenPropiedadYRelaciones")]
+    partial class CreacionModeloImagenPropiedadYRelaciones
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.16")
+                .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -236,7 +236,6 @@ namespace PropiedadesBlazor.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Descripcion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaActualizacion")
@@ -252,6 +251,27 @@ namespace PropiedadesBlazor.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categoria");
+                });
+
+            modelBuilder.Entity("PropiedadesBlazor.Modelos.ImagenPropiedad", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("PropiedadId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UrlImagenPropiedad")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PropiedadId");
+
+                    b.ToTable("ImagenPropiedad");
                 });
 
             modelBuilder.Entity("PropiedadesBlazor.Modelos.Propiedad", b =>
@@ -291,11 +311,11 @@ namespace PropiedadesBlazor.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Parqueaderos")
+                    b.Property<int>("Parqueadero")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Precio")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -355,10 +375,21 @@ namespace PropiedadesBlazor.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PropiedadesBlazor.Modelos.ImagenPropiedad", b =>
+                {
+                    b.HasOne("PropiedadesBlazor.Modelos.Propiedad", "Propiedad")
+                        .WithMany("ImagenPropiedad")
+                        .HasForeignKey("PropiedadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Propiedad");
+                });
+
             modelBuilder.Entity("PropiedadesBlazor.Modelos.Propiedad", b =>
                 {
                     b.HasOne("PropiedadesBlazor.Modelos.Categoria", "Categoria")
-                        .WithMany("Propiedades")
+                        .WithMany("Propiedad")
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -368,7 +399,12 @@ namespace PropiedadesBlazor.Data.Migrations
 
             modelBuilder.Entity("PropiedadesBlazor.Modelos.Categoria", b =>
                 {
-                    b.Navigation("Propiedades");
+                    b.Navigation("Propiedad");
+                });
+
+            modelBuilder.Entity("PropiedadesBlazor.Modelos.Propiedad", b =>
+                {
+                    b.Navigation("ImagenPropiedad");
                 });
 #pragma warning restore 612, 618
         }

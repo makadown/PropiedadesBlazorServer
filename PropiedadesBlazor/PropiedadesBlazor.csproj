@@ -2,23 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-PropiedadesBlazor-110c900c-f6d4-4c6a-b974-84065d8a709d</UserSecretsId>
+	<UseRazorSourceGenerator>false</UseRazorSourceGenerator>
+    <UserSecretsId>aspnet-PropiedadesBlazor-2555577e-ef4f-4fb7-8fba-be50577b2d4a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.16" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.16" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.16" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.16" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.16" />
-    <PackageReference Include="System.Linq" Version="4.3.0" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.9" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\imagenes\" />
+    <Folder Include="wwwroot\ImagenesPropiedades\" />
   </ItemGroup>
 
 </Project>

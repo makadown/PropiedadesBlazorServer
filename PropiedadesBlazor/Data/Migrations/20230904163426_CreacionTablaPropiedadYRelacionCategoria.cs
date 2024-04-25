@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PropiedadesBlazor.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class CreacionTablaPropiedadYSuRelacion : Migration
+    public partial class CreacionTablaPropiedadYRelacionCategoria : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,8 +22,8 @@ namespace PropiedadesBlazor.Data.Migrations
                     Area = table.Column<int>(type: "int", nullable: false),
                     Habitaciones = table.Column<int>(type: "int", nullable: false),
                     Banios = table.Column<int>(type: "int", nullable: false),
-                    Parqueaderos = table.Column<int>(type: "int", nullable: false),
-                    Precio = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Parqueadero = table.Column<int>(type: "int", nullable: false),
+                    Precio = table.Column<double>(type: "float", nullable: false),
                     Activo = table.Column<bool>(type: "bit", nullable: false),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaActualizacion = table.Column<DateTime>(type: "datetime2", nullable: false),

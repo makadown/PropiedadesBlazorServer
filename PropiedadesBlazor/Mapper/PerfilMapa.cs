@@ -4,16 +4,15 @@ using PropiedadesBlazor.Modelos.DTO;
 
 namespace PropiedadesBlazor.Mapper
 {
-    /// <inheritdoc />
-    public class MapProfile: Profile
+    public class PerfilMapa : Profile
     {
-        /// <inheritdoc />
-        public MapProfile()
+        public PerfilMapa()
         {
-            CreateMap<CategoriaDTO, Categoria>().ReverseMap();
+            CreateMap<CategoriaDTO, Categoria>();
+            CreateMap<Categoria, CategoriaDTO>();
             CreateMap<Propiedad, PropiedadDTO>().ReverseMap();
             CreateMap<Categoria, DropDownCategoriaDTO>().ReverseMap();
-            // CreateMap<ImagenPropiedad, ImagenPropiedadDTO>().ReverseMap();
+            CreateMap<ImagenPropiedad, ImagenPropiedadDTO>().ReverseMap();
         }
     }
 }
