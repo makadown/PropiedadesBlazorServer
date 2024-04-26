@@ -312,6 +312,10 @@
 
     private async Task AgregarImagenesPropiedad(PropiedadDTO propDTO)
     {
+        if (propDTO.UrlImagenes == null || !propDTO.UrlImagenes.Any())
+		{
+			return;
+		}
         foreach (var urlImagen in propiedadDTO.UrlImagenes)
         {
             if (propiedadDTO.ImagenPropiedad == null || propiedadDTO.ImagenPropiedad.Where(x => x.UrlImagenPropiedad == urlImagen).Count() == 0)
